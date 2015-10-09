@@ -294,11 +294,11 @@ void MyImpGCanvas::fillConvexPolygon(const GPoint pointArray[], int count, const
 			for(int x = xMin; x < xMax; x++){
 				GPixel *dstPixel = bitmap.getAddr(x,y);
 				if(GPixel_GetA(*srcPixel)==255){
-					dstPixel[0] = GPixel_PackARGB(255,GPixel_GetR(*srcPixel),GPixel_GetG(*srcPixel),GPixel_GetB(*srcPixel));
+					*dstPixel = GPixel_PackARGB(255,GPixel_GetR(*srcPixel),GPixel_GetG(*srcPixel),GPixel_GetB(*srcPixel));
 				}
 				else{
 					GPixel blendedPixel = Src_Over_Blend(*srcPixel, *dstPixel);
-					dstPixel[0] = blendedPixel;
+					*dstPixel = blendedPixel;
 				}
 			}
 			lineArray[left].curr_x = lineArray[left].curr_x + lineArray[left].slope;
